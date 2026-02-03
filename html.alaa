@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nariman 💕</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffd6e8, #fbe7ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  color: #ff6fae;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(0.8);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  100% {
+    transform: translateY(-10vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.container {
+  background: #ffffffcc;
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+  width: 380px;
+  position: relative;
+  z-index: 10;
+}
+
+h1 {
+  color: #ff5fa2;
+  margin-bottom: 25px;
+}
+
+.teddy {
+  font-size: 50px;
+  margin-bottom: 15px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+button {
+  border: none;
+  padding: 14px 30px;
+  border-radius: 999px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#yesBtn {
+  background: #ff8fc7;
+  color: white;
+  box-shadow: 0 10px 20px rgba(255,143,199,0.5);
+}
+
+#yesBtn:hover {
+  transform: scale(1.1);
+}
+
+#noBtn {
+  background: #ff6b6b;
+  color: white;
+  box-shadow: 0 10px 20px rgba(255,107,107,0.4);
+  position: relative;
+}
+
+.message {
+  margin-top: 25px;
+  font-size: 22px;
+  color: #ff5fa2;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="teddy">🧸💖🧸</div>
+  <h1>Nariman 💕<br>Do you like me?</h1>
+
+  <div class="buttons">
+    <button id="yesBtn">Yes 💗</button>
+    <button id="noBtn">No 💔</button>
+  </div>
+
+  <div class="message" id="message">
+    Yaaay Nariman 🎀💖<br>
+    I knew it! 🥰🧸
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const message = document.getElementById("message");
+
+// Playful No button
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 150 - 75;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+// Yes click
+yesBtn.addEventListener("click", () => {
+  message.classList.add("show");
+  yesBtn.style.display = "none";
+  noBtn.style.display = "none";
+});
+
+// Hearts generator
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 7000);
+}
+
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
